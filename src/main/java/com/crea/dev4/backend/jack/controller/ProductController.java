@@ -57,7 +57,6 @@ public class ProductController {
     public Product createProduct(@RequestBody Product p) {
         productDao.save(p);
         return p;
-
     }
 
     @RequestMapping(value = "/delete/{id}", method = { RequestMethod.DELETE, RequestMethod.GET, RequestMethod.POST })

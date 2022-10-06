@@ -12,4 +12,6 @@ public interface AccountDao extends JpaRepository<Account, Integer> {
     public List<Account> findAll();
 
     public Account findById(int id);
+
+    public Account findByEmailLike(String email);
 }
