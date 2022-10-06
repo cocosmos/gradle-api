@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Getter
 @AllArgsConstructor
 @Entity
-public class User {
+public class Account {
     @Id
     private int id;
     private String email;
@@ -18,7 +18,7 @@ public class User {
 
     private String password;
 
-    public User() {
+    public Account() {
         this(0, "", "", "");
     }
 
