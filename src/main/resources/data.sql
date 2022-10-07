@@ -1,6 +1,6 @@
-INSERT INTO product(id, name, category, price) VALUES('1','Iphone', 'phone','1000');
-INSERT INTO product(id, name, category, price) VALUES('2','Samsung', 'phone','500');
-INSERT INTO product(id, name, category, price) VALUES('3','Asus', 'pc','700');
+INSERT INTO product(id, name, category, price, bitcoin) VALUES('1','Iphone', 'phone','1000', '0');
+INSERT INTO product(id, name, category, price, bitcoin) VALUES('2','Samsung', 'phone','500', '0');
+INSERT INTO product(id, name, category, price, bitcoin) VALUES('3','Asus', 'pc','700','0');
 
 
 INSERT INTO account(id, email, name, password) VALUES('1','john@example.com','John','test');

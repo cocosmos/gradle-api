@@ -17,9 +17,10 @@ public class Product {
     private String name;
     private String category;
     private float price;
+    private float bitcoin;
 
     public Product() {
-        this(0, "", "", 0.0f);
+        this(0, "", "", 0.0f, 0.0f);
     }
 
 }
