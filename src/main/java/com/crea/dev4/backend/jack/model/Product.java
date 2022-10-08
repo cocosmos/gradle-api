@@ -1,14 +1,11 @@
 package com.crea.dev4.backend.jack.model;
 
-import lombok.Setter;
-
 import lombok.AllArgsConstructor;
-import lombok.Getter;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Setter
-@Getter
+import com.crea.dev4.backend.jack.utils.GetPrice;
+
 @AllArgsConstructor
 @Entity
 public class Product {
@@ -17,10 +14,60 @@ public class Product {
     private String name;
     private String category;
     private float price;
+
     private float bitcoin;
+    private float ethereum;
 
     public Product() {
-        this(0, "", "", 0.0f, 0.0f);
+        this(0, "", "", 0.0f, 0.0f, 0.0f);
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setBitcoin(float bitcoin) {
+        this.bitcoin = bitcoin;
+    }
+
+    public void setEthereum(float ethereum) {
+        this.ethereum = ethereum;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getCategory() {
+        return this.category;
+    }
+
+    public float getPrice() {
+        return this.price;
+    }
+
+    public float getBitcoin() {
+        return this.price * GetPrice.getCoinRate("bitcoin", "usd");
+    }
+
+    public float getEthereum() {
+        return this.price * GetPrice.getCoinRate("ethereum", "usd");
     }
 
 }
