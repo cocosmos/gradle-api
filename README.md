@@ -19,4 +19,4 @@ Projet microservices avec Spring boot avec Dbase (mysql /H2)
 
 - Backend : Api de coingecko
 - Frontend : React Typescript
-- Diagramme :[<img src="https://github.com/cocosmos/gradle-api/diagramme.jpg">](Diagramme de classe)
+- Diagramme :[<img src="https://raw.githubusercontent.com/cocosmos/gradle-api/main/diagramme.JPG">](Diagramme de classe)
