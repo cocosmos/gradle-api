@@ -19,10 +19,4 @@ public interface ProductDao extends JpaRepository<Product, Integer> {
 
     public Product findByNameLike(String name);
 
-    /*
-     * @Query(value="", nativeQuery = true);
-     * public Produ
-     */
-
-    /* public Product createProduct(Product p); */
 }
