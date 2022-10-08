@@ -21,12 +21,6 @@ public class ProductController {
     @Autowired
     private ProductDao productDao;
 
-    @GetMapping(value = "/price")
-    public Product getPrice() {
-
-        return new Product(5, "test", "teds", 500, 0, 0);
-    }
-
     @GetMapping(value = "/product/{id}")
     public Product displayProduct(@PathVariable int id) {
         Product productFounded = productDao.findById(id);

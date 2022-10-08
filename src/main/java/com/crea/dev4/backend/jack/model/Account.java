@@ -3,6 +3,7 @@ package com.crea.dev4.backend.jack.model;
 import lombok.Setter;
 import lombok.Getter;
 import lombok.AllArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
