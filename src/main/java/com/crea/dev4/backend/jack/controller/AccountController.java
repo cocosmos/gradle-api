@@ -1,5 +1,6 @@
 package com.crea.dev4.backend.jack.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,40 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.crea.dev4.backend.jack.dao.AccountDao;
+import com.crea.dev4.backend.jack.dao.FavoriteDao;
+import com.crea.dev4.backend.jack.dao.ProductDao;
 import com.crea.dev4.backend.jack.model.Account;
+import com.crea.dev4.backend.jack.model.Favorite;
+import com.crea.dev4.backend.jack.model.Product;
 
 @RestController
 public class AccountController {
     @Autowired
     private AccountDao AccountDao;
+    @Autowired
+    private FavoriteDao favoriteDao;
+    @Autowired
+    private ProductDao productDao;
 
     @GetMapping(value = "/account/{id}")
     public Account displayAccount(@PathVariable int id) {
         Account AccountFounded = AccountDao.findById(id);
 
         return AccountFounded;
+    }
+
+    @GetMapping(value = "/account/{id}/favorite")
+    public List<Product> displayProduct(@PathVariable int id) {
+
+        List<Favorite> FavoritesFounded = favoriteDao.findByAccountid(id);
+        List FavoriteProducts = new ArrayList<Product>();
+
+        for (Favorite favorite : FavoritesFounded) {
+            Product productFinded = productDao.findById(favorite.getProductid());
+            FavoriteProducts.add(productFinded);
+        }
+
+        return FavoriteProducts;
     }
 
     @GetMapping(value = "/accounts")
