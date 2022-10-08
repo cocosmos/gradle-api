@@ -3,9 +3,6 @@ package com.crea.dev4.backend.jack.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,11 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 import com.crea.dev4.backend.jack.dao.ProductDao;
 import com.crea.dev4.backend.jack.dao.exception.ProductNotFoundException;
-import com.crea.dev4.backend.jack.model.Coin;
 import com.crea.dev4.backend.jack.model.Product;
 
 @RestController
@@ -26,20 +21,10 @@ public class ProductController {
     @Autowired
     private ProductDao productDao;
 
-    private final String TODO_API_URL = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd";
-
-    private RestTemplate restTemplate;
-
-    public void JsonPlaceHolderService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-
     @GetMapping(value = "/price")
-    public Coin getPrice() {
-        ResponseEntity<Coin> exchange = restTemplate.exchange(TODO_API_URL, HttpMethod.GET, null,
-                new ParameterizedTypeReference<Coin>() {
-                });
-        return exchange.getBody();
+    public Product getPrice() {
+
+        return new Product(5, "test", "teds", 500, 0, 0);
     }
 
     @GetMapping(value = "/product/{id}")
