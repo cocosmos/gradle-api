@@ -20,17 +20,35 @@ public class FavoriteController {
     @Autowired
     private FavoriteDao favoriteDao;
 
+    /**
+     * List all favorite product by accountId
+     * 
+     * @param AccountId
+     * @return list of favorites
+     */
     @GetMapping(value = "/favorites/{idAccount}")
-    public List<Favorite> listFavorite(@PathVariable int idAccount) {
-        return favoriteDao.findByAccountid(idAccount);
+    public List<Favorite> listFavorite(@PathVariable int AccountId) {
+        return favoriteDao.findByAccountid(AccountId);
     }
 
+    /**
+     * Add a favorite product
+     * 
+     * @param f favorite
+     * @return favorite
+     */
     @PostMapping(value = "/favorite/add")
     public Favorite addFavorite(@RequestBody Favorite f) {
         return favoriteDao.save(f);
     }
 
-    @RequestMapping(value = "/favorite/delete", method = { RequestMethod.DELETE, RequestMethod.GET,
+    /**
+     * Remove a favorite product
+     * 
+     * @param f favorite
+     * @return void
+     */
+    @RequestMapping(value = "/favorite/remove", method = { RequestMethod.DELETE, RequestMethod.GET,
             RequestMethod.POST })
     public void removeFavorite(@RequestBody Favorite f) {
 

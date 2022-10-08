@@ -11,6 +11,7 @@ import javax.persistence.Id;
 @Getter
 @AllArgsConstructor
 @Entity
+
 public class Account {
     @Id
     private int id;

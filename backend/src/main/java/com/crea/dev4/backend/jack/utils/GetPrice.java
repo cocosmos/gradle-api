@@ -8,6 +8,13 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class GetPrice {
+    /**
+     * Get coin rate
+     * 
+     * @param idCoin   id of coingecko String (bitcoin)
+     * @param currency Fiat String (usd)
+     * @return rate of the token
+     */
     public static float getCoinRate(String idCoin, String currency) {
         float price = 0.0f;
         RestTemplate restTemplate = new RestTemplate();

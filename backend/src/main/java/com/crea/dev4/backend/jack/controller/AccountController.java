@@ -26,6 +26,12 @@ public class AccountController {
     @Autowired
     private ProductDao productDao;
 
+    /**
+     * Display an user account
+     * 
+     * @param id of the user
+     * @return the account
+     */
     @GetMapping(value = "/account/{id}")
     public Account displayAccount(@PathVariable int id) {
         Account AccountFounded = AccountDao.findById(id);
@@ -33,6 +39,12 @@ public class AccountController {
         return AccountFounded;
     }
 
+    /**
+     * List of favorite products for a accountId
+     * 
+     * @param id of the account
+     * @return list of favorite products
+     */
     @GetMapping(value = "/account/{id}/favorite")
     public List<Product> displayProduct(@PathVariable int id) {
 
@@ -47,17 +59,32 @@ public class AccountController {
         return FavoriteProducts;
     }
 
+    /**
+     * All accounts
+     * 
+     * @return all accounts
+     */
     @GetMapping(value = "/accounts")
     public List<Account> listAccounts() {
         return AccountDao.findAll();
     }
 
+    /**
+     * 
+     * @param a : Account to create
+     * @return created account
+     */
     @PostMapping(value = "/account/create")
     public Account createAccount(@RequestBody Account a) {
         AccountDao.save(a);
         return a;
     }
 
+    /**
+     * 
+     * @param a : Account to login
+     * @return authorized login or not
+     */
     @PostMapping(value = "/account/login")
     public boolean loginAccount(@RequestBody Account a) {
         boolean auth = false;

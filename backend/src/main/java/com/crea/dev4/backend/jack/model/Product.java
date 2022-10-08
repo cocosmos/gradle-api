@@ -62,10 +62,20 @@ public class Product {
         return this.price;
     }
 
+    /**
+     * Get converted price in bitcoin
+     * 
+     * @return price in bitcoin
+     */
     public float getBitcoin() {
         return this.price * GetPrice.getCoinRate("bitcoin", "usd");
     }
 
+    /**
+     * Get converted price in ethereum
+     * 
+     * @return price in ethereum
+     */
     public float getEthereum() {
         return this.price * GetPrice.getCoinRate("ethereum", "usd");
     }
