@@ -42,7 +42,7 @@ public class ProductController {
         return productDao.findByPriceGreaterThan(price);
     }
 
-    @GetMapping(value = "/name/{name}")
+    @GetMapping(value = "/product/name/{name}")
     public Product displayProductByName(@PathVariable String name) {
         return productDao.findByNameLike(name);
     }
@@ -52,13 +52,14 @@ public class ProductController {
         return productDao.findByCategoryLike(category);
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping(value = "/product/create")
     public Product createProduct(@RequestBody Product p) {
         productDao.save(p);
         return p;
     }
 
-    @RequestMapping(value = "/delete/{id}", method = { RequestMethod.DELETE, RequestMethod.GET, RequestMethod.POST })
+    @RequestMapping(value = "/product/delete/{id}", method = { RequestMethod.DELETE, RequestMethod.GET,
+            RequestMethod.POST })
     public void deleteProduct(@PathVariable int id) {
         Product productFinded = productDao.findById(id);
 
