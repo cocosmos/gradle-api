@@ -17,6 +17,7 @@ public class Product {
 
     private float bitcoin;
     private float ethereum;
+    static Coin coins = GetPrice.getCoinRate("bitcoin,ethereum", "usd");
 
     public Product() {
         this(0, "", "", 0.0f, 0.0f, 0.0f);
@@ -68,7 +69,7 @@ public class Product {
      * @return price in bitcoin
      */
     public float getBitcoin() {
-        return this.price * GetPrice.getCoinRate("bitcoin", "usd");
+        return this.price * Coin.bitcoin;
     }
 
     /**
@@ -77,7 +78,7 @@ public class Product {
      * @return price in ethereum
      */
     public float getEthereum() {
-        return this.price * GetPrice.getCoinRate("ethereum", "usd");
+        return this.price * Coin.ethereum;
     }
 
 }
