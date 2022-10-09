@@ -27,16 +27,17 @@ const Product: FunctionComponent<ProductProps> = ({ product, user }) => {
         .then((_res: any) => {
           console.log(_res.data);
           setFavorites(_res.data);
-          favorites.forEach((f) => {
-            if (f.id === product.id) {
-              setFavorite(true);
-            }
-          });
         });
     }
-  }, [user]);
+    favorites.forEach((f) => {
+      if (f.id === product.id) {
+        setFavorite(true);
+      }
+    });
+  }, []);
+
   /**
-   * Need to be logged to be abble to add a favorite
+   * Need to be logged to be abble to add or remove a favorite
    */
   const addFavorite = () => {
     if (user) {

@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-JackApplication<jack>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.crea.dev4.backend.jack.JackApplication",
+      "projectName": "jack",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
