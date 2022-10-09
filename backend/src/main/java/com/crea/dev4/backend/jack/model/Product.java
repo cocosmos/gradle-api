@@ -15,8 +15,8 @@ public class Product {
     private String category;
     private float price;
 
-    private float bitcoin;
-    private float ethereum;
+    public float bitcoin;
+    public float ethereum;
     static Coin coins = GetPrice.getCoinRate("bitcoin,ethereum", "usd");
 
     public Product() {

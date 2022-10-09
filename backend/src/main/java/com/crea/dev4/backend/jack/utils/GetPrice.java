@@ -17,7 +17,6 @@ public class GetPrice {
      * @return rate of the token
      */
     public static Coin getCoinRate(String idCoin, String currency) {
-        float price = 0.0f;
         RestTemplate restTemplate = new RestTemplate();
         String fooResourceUrl = "https://api.coingecko.com/api/v3/simple/price?ids=" + idCoin + "&vs_currencies="
                 + currency;

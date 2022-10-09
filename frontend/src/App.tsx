@@ -8,7 +8,6 @@ import { Button, Stack, TextField } from "@mui/material";
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([]);
-  const [favorites, setFavorites] = useState<ProductType[]>([]);
 
   const [formValue, setFormvalue] = useState({ password: "", email: "" });
   const [user, setUser] = useState<UserType>();
@@ -49,7 +48,6 @@ function App() {
     (prop: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setFormvalue({ ...formValue, [prop]: event.target.value });
     };
-  console.log(formValue);
 
   return (
     <div className="App">
