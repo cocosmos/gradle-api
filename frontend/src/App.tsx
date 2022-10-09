@@ -1,34 +1,94 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { FormEventHandler, useEffect, useRef, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+import axios from "axios";
+import Product from "./components/Product";
+import { ProductType, UserType } from "./type";
+import { Button, Stack, TextField } from "@mui/material";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [favorites, setFavorites] = useState<ProductType[]>([]);
+
+  const [formValue, setFormvalue] = useState({ password: "", email: "" });
+  const [user, setUser] = useState<UserType>();
+  /**
+   * Product
+   */
+  useEffect(() => {
+    axios.get("https://localhost/products").then((_res: any) => {
+      console.log(_res.data);
+      setProducts(_res.data);
+    });
+  }, []);
+
+  products.map((product) => {
+    product.id;
+  });
+  /**
+   * Login
+   * @param e event
+   */
+  const submitHandler = (e: any) => {
+    e.preventDefault();
+    axios({
+      method: "post",
+      url: "https://localhost/account/login",
+      headers: {},
+      data: {
+        email: formValue.email,
+        password: formValue.password,
+      },
+    }).then((_res: any) => {
+      console.log(_res.data);
+      setUser(_res.data);
+    });
+  };
+
+  const handleChange =
+    (prop: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setFormvalue({ ...formValue, [prop]: event.target.value });
+    };
+  console.log(formValue);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {user ? (
+        <>
+          <p>Id : {user.name}</p>
+          <p>Name : {user.name}</p>
+          <p>Email : {user.email}</p>
+        </>
+      ) : (
+        <form onSubmit={(e) => submitHandler(e)}>
+          <h2>Login:</h2>{" "}
+          <Stack bgcolor={"white"}>
+            <>
+              <TextField
+                id="email"
+                type={"email"}
+                label="Email"
+                variant="filled"
+                onChange={handleChange("email")}
+              />
+              <TextField
+                id="password"
+                type={"password"}
+                label="Password"
+                variant="filled"
+                onChange={handleChange("password")}
+              />
+              <Button type="submit">Login</Button>
+            </>
+          </Stack>
+        </form>
+      )}
+      <h2>Products:</h2>
+      {products.map((product) => {
+        return <Product product={product} key={product.id} user={user} />;
+      })}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
