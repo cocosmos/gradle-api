@@ -15,6 +15,7 @@ import com.crea.dev4.backend.jack.dao.FavoriteDao;
 import com.crea.dev4.backend.jack.dao.ProductDao;
 import com.crea.dev4.backend.jack.model.Account;
 import com.crea.dev4.backend.jack.model.Favorite;
+import com.crea.dev4.backend.jack.model.Login;
 import com.crea.dev4.backend.jack.model.Product;
 
 @RestController
@@ -82,20 +83,20 @@ public class AccountController {
 
     /**
      * 
-     * @param a : Account to login
+     * @param email password : Account to login
      * @return authorized login or not
      */
     @PostMapping(value = "/account/login")
-    public boolean loginAccount(@RequestBody Account a) {
-        boolean auth = false;
-        Account AccountFinded = AccountDao.findByEmailLike(a.getEmail());
+    public Account loginAccount(@RequestBody Login l) {
+        Account AccountFinded = AccountDao.findByEmailLike(l.email);
+        Account AccountAuthorized = null;
         if (AccountFinded != null) {
-            if (AccountFinded.getPassword().equals(a.getPassword())) {
-                auth = true;
+            if (AccountFinded.getPassword().equals(l.password)) {
+                AccountAuthorized = AccountFinded;
             }
         }
+        return AccountAuthorized;
 
-        return auth;
     }
 
 }
